@@ -18,9 +18,9 @@ class Room
     if purse < @room_price
       puts "#{guest_name} cannot pay the fee of £#{@room_price}, as they only have £#{purse} in their purse."
     else
+      purse -= @room_price
       @guests_in_room << Guest.new(guest_name, fav_song, purse)
     end
-
   end
 
   def add_song_to_room(song_name)
@@ -33,6 +33,11 @@ class Room
     else
       return false
     end
+  end
+
+  def cheer_if_fav_song_is_on
+    @songs_in_room.include?(@fav_song)
+    return "Wooo"
   end
 
 end

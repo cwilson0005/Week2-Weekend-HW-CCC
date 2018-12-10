@@ -1,6 +1,8 @@
 require('minitest/autorun')
 require('minitest/rg')
+require('pry')
 require_relative('../room')
+require_relative('../guest')
 
 class TestRoom < MiniTest::Test
 
@@ -51,5 +53,16 @@ class TestRoom < MiniTest::Test
   def test_is_room_full__false
     assert_equal(false, @room1.is_room_full)
   end
+
+  def test_room_takes_guest_fee
+    @room1.add_guest_to_room("Rory Tailor", "Parliament Blue - Luxury Elite", 7.50)
+    assert_equal(0, @room1.guests_in_room[-1].purse)
+  end
+
+  # def test_fav_song_is_on_for_guest
+  #   @room1.add_song_to_room("Redbone - Childish Gambino")
+  #   binding.pry
+  #   assert_equal("Wooo", @room1.guests_in_room[0].cheer_if_fav_song_is_on)
+  # end
 
 end
