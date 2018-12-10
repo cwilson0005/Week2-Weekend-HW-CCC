@@ -11,7 +11,7 @@ class TestRoom < MiniTest::Test
       Guest.new("James Karpath", "Around the World - Daft Punk", 43.95),
       Guest.new("Frank Reynolds", "Panama - Van Halen", 435.75)
     ]
-    @room1 = Room.new("Lava Lounge", guests_in_room, 7, 75.55)
+    @room1 = Room.new("Lava Lounge", guests_in_room, 7, 7.50)
   end
 
   def test_return_room_name
@@ -27,11 +27,11 @@ class TestRoom < MiniTest::Test
   end
 
   def test_return_room_price
-    assert_equal(75.55, @room1.room_price)
+    assert_equal(7.50, @room1.room_price)
   end
 
   def test_add_guest_to_room
-    @room1.add_guest_to_room("Ronald Reeves", "SOS - Abba", 312.32)
+    @room1.add_guest_to_room("Ronald Reeves", "SOS - Abba", 7.50)
     assert_equal(5, @room1.guests_in_room.length)
   end
 
