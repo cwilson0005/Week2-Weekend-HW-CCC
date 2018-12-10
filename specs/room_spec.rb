@@ -11,7 +11,7 @@ class TestRoom < MiniTest::Test
       Guest.new("James Karpath", "Around the World - Daft Punk", 43.95),
       Guest.new("Frank Reynolds", "Panama - Van Halen", 435.75)
     ]
-    @room1 = Room.new("Lava Lounge", guests_in_room, 14, 75.55)
+    @room1 = Room.new("Lava Lounge", guests_in_room, 7, 75.55)
   end
 
   def test_return_room_name
@@ -23,7 +23,7 @@ class TestRoom < MiniTest::Test
   end
 
   def test_return_room_limit
-    assert_equal(14, @room1.room_limit)
+    assert_equal(7, @room1.room_limit)
   end
 
   def test_return_room_price
@@ -38,6 +38,18 @@ class TestRoom < MiniTest::Test
   def test_add_song_to_room
     @room1.add_song_to_room("SOS - Abba")
     assert_equal(1, @room1.songs_in_room.length)
+  end
+
+  def test_is_room_full__true
+    @room1.guests_in_room << Guest.new("Camila Paige", "Burnin' - Bolam", 102.59)
+    @room1.guests_in_room << Guest.new("Holly Craig", "One - Metallica", 99.23)
+    @room1.guests_in_room << Guest.new("Megan Cannon", "Fireworks - Katy Perry", 103.21)
+    @room1.guests_in_room << Guest.new("Fred Quilox", "Marines - Sodom", 10.21)
+    assert_equal(true, @room1.is_room_full)
+  end
+
+  def test_is_room_full__false
+    assert_equal(false, @room1.is_room_full)
   end
 
 end
