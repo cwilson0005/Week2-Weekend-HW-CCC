@@ -30,4 +30,9 @@ class TestRoom < MiniTest::Test
     assert_equal(75.55, @room1.room_price)
   end
 
+  def test_add_guest_to_room
+    @room1.guests_in_room << Guest.new("Ronald Reeves", "SOS - Abba", 312.32)
+    assert_equal(5, @room1.guests_in_room.length)
+  end
+
 end
