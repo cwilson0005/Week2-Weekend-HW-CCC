@@ -31,8 +31,13 @@ class TestRoom < MiniTest::Test
   end
 
   def test_add_guest_to_room
-    @room1.guests_in_room << Guest.new("Ronald Reeves", "SOS - Abba", 312.32)
+    @room1.add_guest_to_room("Ronald Reeves", "SOS - Abba", 312.32)
     assert_equal(5, @room1.guests_in_room.length)
+  end
+
+  def test_add_song_to_room
+    @room1.add_song_to_room("SOS - Abba")
+    assert_equal(1, @room1.songs_in_room.length)
   end
 
 end
