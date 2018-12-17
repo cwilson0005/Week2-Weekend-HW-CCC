@@ -35,6 +35,10 @@ class Room
     end
   end
 
+  def remove_guest 
+    @guests_in_room.pop
+  end
+
   def cheer_if_fav_song_is_on(guest)
     @songs_in_room.include?(@fav_song)
     return "Wooo"
