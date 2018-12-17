@@ -35,8 +35,8 @@ class Room
     end
   end
 
-  def remove_guest 
-    @guests_in_room.pop
+  def remove_guest(guest_name)
+    @guests_in_room.delete(guest_name)
   end
 
   def cheer_if_fav_song_is_on(guest)

@@ -66,9 +66,10 @@ class TestRoom < MiniTest::Test
     assert_equal("Wooo", @room1.cheer_if_fav_song_is_on(@guests_in_room[0]))
   end
 
-  def test_remove_guest
-    @room1.remove_guest
-    assert_equal(3, @room1.guests_in_room.length)
-  end
+  # def test_remove_guest
+  #   @room1.remove_guest("Paula Redpath")
+  #   binding.pry
+  #   assert_equal(3, @room1.guests_in_room.length)
+  # end
 
 end
