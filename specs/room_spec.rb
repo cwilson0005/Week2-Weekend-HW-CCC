@@ -7,13 +7,14 @@ require_relative('../guest')
 class TestRoom < MiniTest::Test
 
   def setup
-    guests_in_room = [
+    @guests_in_room = [
       Guest.new("Conor Wilson", "Redbone - Childish Gambino", 230.54),
       Guest.new("Paula Redpath", "Angels - Robbie Williams", 100.84),
       Guest.new("James Karpath", "Around the World - Daft Punk", 43.95),
       Guest.new("Frank Reynolds", "Panama - Van Halen", 435.75)
     ]
-    @room1 = Room.new("Lava Lounge", guests_in_room, 7, 7.50)
+
+    @room1 = Room.new("Lava Lounge", 7, 7.50, @guests_in_room)
   end
 
   def test_return_room_name
@@ -59,10 +60,10 @@ class TestRoom < MiniTest::Test
     assert_equal(0, @room1.guests_in_room[-1].purse)
   end
 
-  # def test_fav_song_is_on_for_guest
-  #   @room1.add_song_to_room("Redbone - Childish Gambino")
-  #   binding.pry
-  #   assert_equal("Wooo", @room1.guests_in_room[0].cheer_if_fav_song_is_on)
-  # end
+  def test_fav_song_is_on_for_guest
+    @room1.add_song_to_room("Redbone - Childish Gambino")
+    # binding.pry
+    assert_equal("Wooo", @room1.cheer_if_fav_song_is_on(@guests_in_room[0]))
+  end
 
 end
